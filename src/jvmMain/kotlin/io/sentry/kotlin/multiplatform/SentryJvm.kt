@@ -4,8 +4,8 @@ import io.sentry.Sentry as SentryJvm
 
 internal actual object SentryBridge {
 
-    actual fun captureMessage(msg: String) {
-        SentryJvm.captureMessage(msg)
+    actual fun captureMessage(message: String) {
+        SentryJvm.captureMessage(message)
     }
 
     actual fun start(dsn: String, context: Any?) {

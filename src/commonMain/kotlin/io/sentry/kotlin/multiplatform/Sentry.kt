@@ -31,7 +31,7 @@ internal expect object SentryBridge {
      */
     fun start(dsn: String, context: Any? = null)
 
-    fun captureMessage(msg: String)
+    fun captureMessage(message: String)
 
     fun captureException(throwable: Throwable)
 

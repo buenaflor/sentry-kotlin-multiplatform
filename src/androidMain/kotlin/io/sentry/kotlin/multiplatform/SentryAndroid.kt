@@ -6,8 +6,8 @@ import io.sentry.android.core.SentryAndroid
 
 internal actual object SentryBridge {
 
-    actual fun captureMessage(msg: String) {
-        Sentry.captureMessage(msg)
+    actual fun captureMessage(message: String) {
+        Sentry.captureMessage(message)
     }
 
     actual fun start(dsn: String, context: Any?) {
@@ -24,18 +24,6 @@ internal actual object SentryBridge {
 
     actual fun close() {
         Sentry.close()
-    }
-}
-
-object ContextProvider {
-    private lateinit var resolveContext: ()-> Context
-
-    fun init(resolveContext: () -> Context) {
-        ContextProvider.resolveContext = resolveContext
-    }
-
-    fun getContext() : Context {
-        return resolveContext()
     }
 }
 

@@ -1,7 +1,6 @@
 package sample.kpm_app
 
 import android.content.Context
-import android.util.Log
 import io.sentry.kotlin.multiplatform.Sentry
 
 class Sentry {
