@@ -1,7 +1,7 @@
 package sample.kpm_app
 
 import android.content.Context
-import io.sentry.kotlin.multiplatform.ContextProvider
+import android.util.Log
 import io.sentry.kotlin.multiplatform.Sentry
 
 class Sentry {
@@ -9,9 +9,8 @@ class Sentry {
         /**
          * For manual initialization
          */
-        fun init(dsn: String, resolveContext: ()-> Context) {
-            ContextProvider.init(resolveContext)
-            Sentry.init(dsn)
+        fun init(dsn: String, context: Context) {
+            Sentry.init(dsn, context)
         }
 
         fun captureMessage(message: String) {

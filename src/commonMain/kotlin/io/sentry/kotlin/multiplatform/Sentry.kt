@@ -1,8 +1,8 @@
 package io.sentry.kotlin.multiplatform
 
 object Sentry {
-    fun init(dsn: String) {
-        SentryBridge.start(dsn)
+    fun init(dsn: String, context: Any? = null) {
+        SentryBridge.start(dsn, context)
     }
 
     fun captureMessage(msg: String) {
@@ -29,7 +29,7 @@ internal expect object SentryBridge {
     /**
      * We can't use init because of `init` is reserved in Objective-C and Swift.
      */
-    fun start(dsn: String)
+    fun start(dsn: String, context: Any? = null)
 
     fun captureMessage(msg: String)
 

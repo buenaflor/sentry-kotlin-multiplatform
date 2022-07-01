@@ -1,5 +1,6 @@
 package sample.kpm_app.android
 
+import android.app.Application
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -27,5 +28,12 @@ class MainActivity : AppCompatActivity() {
                 Sentry.captureException(e)
             }
         }
+    }
+}
+
+class SentryApplication : Application() {
+    override fun onCreate() {
+        super.onCreate()
+        Sentry.init("https://83f281ded2844eda83a8a413b080dbb9@o447951.ingest.sentry.io/5903800", this)
     }
 }

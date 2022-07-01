@@ -8,7 +8,7 @@ internal actual object SentryBridge {
         SentryJvm.captureMessage(msg)
     }
 
-    actual fun start(dsn: String) {
+    actual fun start(dsn: String, context: Any?) {
         SentryJvm.init {
             it.setDebug(true)
             it.dsn = dsn

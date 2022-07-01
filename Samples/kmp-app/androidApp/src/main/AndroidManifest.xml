@@ -5,8 +5,9 @@
     <application
         android:allowBackup="false"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <meta-data android:name="io.sentry.dsn" android:value="https://83f281ded2844eda83a8a413b080dbb9@o447951.ingest.sentry.io/5903800" />
+        android:theme="@style/AppTheme"
+        android:name=".SentryApplication">
+        <meta-data android:name="io.sentry.auto-init" android:value="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
