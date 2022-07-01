@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import sample.kpm_app.Platform
-import sample.kpm_app.Proxy
+import sample.kpm_app.Sentry
 import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
@@ -14,9 +14,8 @@ class MainActivity : AppCompatActivity() {
 
         val captureMessageBtn: Button = findViewById(R.id.captureMessageBtn)
         val captureExceptionBtn: Button = findViewById(R.id.captureExceptionBtn)
-        val sentryProxy = Proxy()
         captureMessageBtn.setOnClickListener {
-            sentryProxy.captureMessage("From KPM Sample App: " + Platform().platform)
+            Sentry.captureMessage("From KPM Sample App: " + Platform().platform)
         }
 
         captureExceptionBtn.setOnClickListener {
@@ -25,7 +24,7 @@ class MainActivity : AppCompatActivity() {
                 val arr = arrayOf(1)
                 arr[2]
             } catch (e: Exception) {
-                sentryProxy.captureException(e)
+                Sentry.captureException(e)
             }
         }
     }
