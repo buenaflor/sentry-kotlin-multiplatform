@@ -9,7 +9,12 @@ class Sentry {
          * For manual initialization
          */
         fun init(dsn: String, context: Context) {
-            Sentry.init(dsn, context)
+            Sentry.init(context) {
+                it.dsn = dsn
+                it.attachStackTrace = true
+                it.attachThreads = true
+                it.enableActivityLifecycleBreadcrumbs = true
+            }
         }
 
         fun captureMessage(message: String) {

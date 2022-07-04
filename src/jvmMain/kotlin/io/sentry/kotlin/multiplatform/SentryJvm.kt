@@ -2,24 +2,24 @@ package io.sentry.kotlin.multiplatform
 
 import io.sentry.Sentry as SentryJvm
 
-internal actual object SentryBridge {
+object Sentry {
 
-    actual fun captureMessage(message: String) {
+    fun captureMessage(message: String) {
         SentryJvm.captureMessage(message)
     }
 
-    actual fun start(dsn: String, context: Any?) {
+    fun init(dsn: String, context: Any?) {
         SentryJvm.init {
             it.setDebug(true)
             it.dsn = dsn
         }
     }
 
-    actual fun captureException(throwable: Throwable) {
+    fun captureException(throwable: Throwable) {
         SentryJvm.captureException(throwable)
     }
 
-    actual fun close() {
+    fun close() {
         SentryJvm.close()
     }
 

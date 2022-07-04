@@ -3,27 +3,35 @@ package io.sentry.kotlin.multiplatform
 import android.content.Context
 import io.sentry.Sentry
 import io.sentry.android.core.SentryAndroid
+import io.sentry.android.core.SentryAndroidOptions
 
-internal actual object SentryBridge {
+object Sentry {
 
-    actual fun captureMessage(message: String) {
+    fun init(context: Context, configuration: OptionsConfiguration<SentryKmpAndroidOptions>) {
+        val options = SentryKmpAndroidOptions()
+        configuration.configure(options)
+        SentryAndroid.init(context, convertToSentryAndroidOptions(options))
+    }
+
+    fun captureMessage(message: String) {
         Sentry.captureMessage(message)
     }
 
-    actual fun start(dsn: String, context: Any?) {
-        SentryAndroid.init(context as Context) { options ->
-            options.dsn = dsn
-            options.isAttachStacktrace = true
-            options.isAttachThreads = true
-        }
-    }
-
-    actual fun captureException(throwable: Throwable) {
+    fun captureException(throwable: Throwable) {
         Sentry.captureException(throwable)
     }
 
-    actual fun close() {
+    fun close() {
         Sentry.close()
+    }
+
+    private fun convertToSentryAndroidOptions(options: SentryKmpAndroidOptions): (SentryAndroidOptions) -> Unit {
+        return { sentryAndroidOptions ->
+            sentryAndroidOptions.dsn = options.dsn
+            sentryAndroidOptions.isAttachThreads = options.attachThreads
+            sentryAndroidOptions.isAttachStacktrace = options.attachStackTrace
+            sentryAndroidOptions.isEnableActivityLifecycleBreadcrumbs = options.enableActivityLifecycleBreadcrumbs
+        }
     }
 }
 
