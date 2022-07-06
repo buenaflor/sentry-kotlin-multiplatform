@@ -1,5 +1,6 @@
 package io.sentry.kotlin.multiplatform
 
+/** Sentry Kotlin Multiplatform SDK API entry point */
 object SentryKMP {
     /**
      * Sentry initialization with a context and option configuration handler.
