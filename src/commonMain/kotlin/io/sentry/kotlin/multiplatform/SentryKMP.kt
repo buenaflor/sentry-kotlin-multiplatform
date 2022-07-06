@@ -5,6 +5,10 @@ object SentryKMP {
         SentryBridge.start(context, configuration)
     }
 
+    fun start(configuration: (SentryKmpOptions) -> Unit) {
+        SentryBridge.start(null, configuration)
+    }
+
     fun captureMessage(message: String) {
         SentryBridge.captureMessage(message)
     }
