@@ -54,12 +54,14 @@ kotlin {
                 implementation("org.jetbrains.kotlin:kotlin-stdlib")
             }
         }
-        val commonTest by getting {
+        /*val commonTest by getting {
             dependencies {
                 implementation("org.jetbrains.kotlin:kotlin-test-common")
                 implementation("org.jetbrains.kotlin:kotlin-test-annotations-common")
             }
         }
+
+         */
 
         val androidMain by getting {
             dependencies {
