@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import io.sentry.kotlin.multiplatform.SentryKMP
+import sample.kpm_app.SharedBusinessLogic
 import sample.kpm_app.Platform
 import java.lang.Exception
 
@@ -15,8 +16,10 @@ class MainActivity : AppCompatActivity() {
 
         val captureMessageBtn: Button = findViewById(R.id.captureMessageBtn)
         val captureExceptionBtn: Button = findViewById(R.id.captureExceptionBtn)
+        val captureHardCrashBtn: Button = findViewById(R.id.captureHardCrash)
+
         captureMessageBtn.setOnClickListener {
-            SentryKMP.captureMessage("From KMP Sample App: " + Platform().platform)
+            SharedBusinessLogic.captureMessage("From KMP Sample App: " + Platform().platform)
         }
 
         captureExceptionBtn.setOnClickListener {
@@ -25,8 +28,12 @@ class MainActivity : AppCompatActivity() {
                 val arr = arrayOf(1)
                 arr[2]
             } catch (e: Exception) {
-                SentryKMP.captureException(e)
+                SharedBusinessLogic.captureException(e)
             }
+        }
+
+        captureHardCrashBtn.setOnClickListener {
+            SharedBusinessLogic.hardCrash()
         }
     }
 }
