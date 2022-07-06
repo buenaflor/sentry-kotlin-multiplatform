@@ -74,6 +74,7 @@ kotlin {
         }
         val appleMain by creating { dependsOn(commonMain) }
         val iosMain by getting { dependsOn(appleMain) }
+        val iosSimulatorArm64Main by getting { dependsOn(appleMain) }
 
         /*
         val appleMain by creating { dependsOn(commonMain) }
