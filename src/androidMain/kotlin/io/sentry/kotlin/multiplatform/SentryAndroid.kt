@@ -6,7 +6,6 @@ import io.sentry.android.core.SentryAndroid
 import io.sentry.android.core.SentryAndroidOptions
 
 internal actual object SentryBridge {
-
     actual fun captureMessage(message: String) {
         Sentry.captureMessage(message)
     }
