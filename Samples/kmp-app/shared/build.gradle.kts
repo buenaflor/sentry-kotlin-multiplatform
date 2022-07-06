@@ -19,21 +19,23 @@ kotlin {
         podfile = project.file("../iosApp/Podfile")
         framework {
             baseName = "shared"
+            export("io.sentry.kotlin.multiplatform:sentry-kotlin-multiplatform:0.0.1")
         }
     }
     
     sourceSets {
-        val commonMain by getting
+        val commonMain by getting {
+            dependencies {
+                api("io.sentry.kotlin.multiplatform:sentry-kotlin-multiplatform:0.0.1")
+            }
+        }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
             }
         }
-        // iOS kpm sdk does not exist yet, so we cannot add a dependency to commonMain
         val androidMain by getting {
-            dependencies {
-                implementation("io.sentry.kotlin.multiplatform:sentry-kotlin-multiplatform:0.0.1")
-            }
+            dependsOn(commonMain)
         }
         val androidTest by getting
         val iosX64Main by getting

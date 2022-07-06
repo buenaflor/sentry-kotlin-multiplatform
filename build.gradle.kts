@@ -39,13 +39,13 @@ kotlin {
     }
 
     jvm()
+    ios()
+    iosSimulatorArm64()
 
     /*
-    ios()
     watchos()
     tvos()
     macosX64()
-
      */
 
     sourceSets {
@@ -72,6 +72,8 @@ kotlin {
                 implementation("io.sentry:sentry:6.1.4")
             }
         }
+        val appleMain by creating { dependsOn(commonMain) }
+        val iosMain by getting { dependsOn(appleMain) }
 
         /*
         val appleMain by creating { dependsOn(commonMain) }

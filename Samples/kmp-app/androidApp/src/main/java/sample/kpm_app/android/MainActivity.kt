@@ -4,8 +4,8 @@ import android.app.Application
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import io.sentry.kotlin.multiplatform.Sentry
 import sample.kpm_app.Platform
-import sample.kpm_app.Sentry
 import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
