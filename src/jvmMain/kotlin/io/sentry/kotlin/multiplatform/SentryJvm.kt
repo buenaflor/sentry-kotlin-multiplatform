@@ -8,11 +8,8 @@ internal actual object SentryBridge {
         SentryJvm.captureMessage(message)
     }
 
-    actual fun start(dsn: String, context: Any?) {
-        SentryJvm.init {
-            it.setDebug(true)
-            it.dsn = dsn
-        }
+    actual fun start(context: Any?, configuration: OptionsConfiguration<SentryOptions>) {
+
     }
 
     actual fun captureException(throwable: Throwable) {

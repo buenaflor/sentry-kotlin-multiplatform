@@ -1,12 +1,12 @@
 package io.sentry.kotlin.multiplatform
 
 object SentryKMP {
-    fun start(dsn: String, context: Any? = null) {
-        SentryBridge.start(dsn, context)
+    fun start(context: Any? = null, configuration: (SentryOptions) -> Unit) {
+        SentryBridge.start(context, configuration)
     }
 
-    fun captureMessage(msg: String) {
-        SentryBridge.captureMessage(msg)
+    fun captureMessage(message: String) {
+        SentryBridge.captureMessage(message)
     }
 
     fun captureException(throwable: Throwable) {
@@ -23,4 +23,8 @@ object SentryKMP {
     fun close() {
         SentryBridge.close()
     }
+}
+
+fun interface OptionsConfiguration<T: SentryOptions> {
+    fun configure(options: T)
 }

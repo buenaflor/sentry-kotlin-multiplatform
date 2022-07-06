@@ -1,7 +1,7 @@
 package io.sentry.kotlin.multiplatform
 
 internal actual object SentryBridge {
-    actual fun start(dsn: String, context: Any?) {
+    actual fun start(context: Any?, configuration: OptionsConfiguration<SentryOptions>) {
 
     }
 

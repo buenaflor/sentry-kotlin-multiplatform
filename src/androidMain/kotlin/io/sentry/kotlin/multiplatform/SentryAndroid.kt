@@ -10,12 +10,14 @@ internal actual object SentryBridge {
         Sentry.captureMessage(message)
     }
 
-    actual fun start(dsn: String, context: Any?) {
-        SentryAndroid.init(context as Context) { options ->
+    actual fun start(context: Any?, configuration: OptionsConfiguration<SentryOptions>) {
+        /*SentryAndroid.init(context as Context) { options ->
             options.dsn = dsn
             options.isAttachStacktrace = true
             options.isAttachThreads = true
         }
+
+         */
     }
 
     actual fun captureException(throwable: Throwable) {
