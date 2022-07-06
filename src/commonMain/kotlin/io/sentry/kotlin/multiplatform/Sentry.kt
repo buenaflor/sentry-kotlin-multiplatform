@@ -1,7 +1,7 @@
 package io.sentry.kotlin.multiplatform
 
-object Sentry {
-    fun init(dsn: String, context: Any? = null) {
+object SentryKMP {
+    fun start(dsn: String, context: Any? = null) {
         SentryBridge.start(dsn, context)
     }
 
