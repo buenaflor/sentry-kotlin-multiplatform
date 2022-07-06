@@ -1,7 +1,7 @@
 package io.sentry.kotlin.multiplatform
 
 object SentryKMP {
-    fun start(context: Any? = null, configuration: (SentryOptions) -> Unit) {
+    fun start(context: Any? = null, configuration: (SentryKmpOptions) -> Unit) {
         SentryBridge.start(context, configuration)
     }
 
@@ -25,6 +25,6 @@ object SentryKMP {
     }
 }
 
-fun interface OptionsConfiguration<T: SentryOptions> {
+fun interface OptionsConfiguration<T: SentryKmpOptions> {
     fun configure(options: T)
 }

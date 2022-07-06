@@ -8,7 +8,7 @@ internal actual object SentryBridge {
         SentryJvm.captureMessage(message)
     }
 
-    actual fun start(context: Any?, configuration: OptionsConfiguration<SentryOptions>) {
+    actual fun start(context: Any?, configuration: OptionsConfiguration<SentryKmpOptions>) {
 
     }
 

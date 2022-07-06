@@ -3,6 +3,7 @@ package io.sentry.kotlin.multiplatform
 import android.content.Context
 import io.sentry.Sentry
 import io.sentry.android.core.SentryAndroid
+import io.sentry.android.core.SentryAndroidOptions
 
 internal actual object SentryBridge {
 
@@ -10,14 +11,10 @@ internal actual object SentryBridge {
         Sentry.captureMessage(message)
     }
 
-    actual fun start(context: Any?, configuration: OptionsConfiguration<SentryOptions>) {
-        /*SentryAndroid.init(context as Context) { options ->
-            options.dsn = dsn
-            options.isAttachStacktrace = true
-            options.isAttachThreads = true
-        }
-
-         */
+    actual fun start(context: Any?, configuration: OptionsConfiguration<SentryKmpOptions>) {
+        val options = SentryKmpOptions()
+        configuration.configure(options)
+        SentryAndroid.init(context as Context, convertToSentryAndroidOptions(options))
     }
 
     actual fun captureException(throwable: Throwable) {
@@ -26,6 +23,14 @@ internal actual object SentryBridge {
 
     actual fun close() {
         Sentry.close()
+    }
+
+    private fun convertToSentryAndroidOptions(options: SentryKmpOptions): (SentryAndroidOptions) -> Unit {
+        return { sentryAndroidOptions ->
+            sentryAndroidOptions.dsn = options.dsn
+            sentryAndroidOptions.isAttachThreads = options.attachThreads
+            sentryAndroidOptions.isAttachStacktrace = options.attachStackTrace
+        }
     }
 }
 
