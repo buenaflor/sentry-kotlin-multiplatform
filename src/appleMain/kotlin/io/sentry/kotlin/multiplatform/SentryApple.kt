@@ -5,8 +5,8 @@ import cocoapods.Sentry.SentrySDK
 import platform.Foundation.NSException
 
 internal actual object SentryBridge {
-    actual fun start(context: Any?, configuration: OptionsConfiguration<SentryKmpOptions>) {
-        val options = SentryKmpOptions()
+    actual fun start(context: Any?, configuration: OptionsConfiguration<SentryKMPOptions>) {
+        val options = SentryKMPOptions()
         configuration.configure(options)
         SentrySDK.startWithOptionsObject(convertToSentryAppleOptions(options))
     }
@@ -24,7 +24,7 @@ internal actual object SentryBridge {
         SentrySDK.close()
     }
 
-    private fun convertToSentryAppleOptions(options: SentryKmpOptions): SentryOptions {
+    private fun convertToSentryAppleOptions(options: SentryKMPOptions): SentryOptions {
         val sentryAppleOptions = SentryOptions()
         sentryAppleOptions.dsn = options.dsn
         sentryAppleOptions.attachStacktrace = options.attachStackTrace

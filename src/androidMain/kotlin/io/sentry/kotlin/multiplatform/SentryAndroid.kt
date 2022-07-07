@@ -10,8 +10,8 @@ internal actual object SentryBridge {
         Sentry.captureMessage(message)
     }
 
-    actual fun start(context: Any?, configuration: OptionsConfiguration<SentryKmpOptions>) {
-        val options = SentryKmpOptions()
+    actual fun start(context: Any?, configuration: OptionsConfiguration<SentryKMPOptions>) {
+        val options = SentryKMPOptions()
         configuration.configure(options)
         SentryAndroid.init(context as Context, convertToSentryAndroidOptions(options))
     }
@@ -24,7 +24,7 @@ internal actual object SentryBridge {
         Sentry.close()
     }
 
-    private fun convertToSentryAndroidOptions(options: SentryKmpOptions): (SentryAndroidOptions) -> Unit {
+    private fun convertToSentryAndroidOptions(options: SentryKMPOptions): (SentryAndroidOptions) -> Unit {
         return { sentryAndroidOptions ->
             sentryAndroidOptions.dsn = options.dsn
             sentryAndroidOptions.isAttachThreads = options.attachThreads

@@ -8,7 +8,7 @@ object SentryKMP {
      * @param context Application context.
      * @param configuration Options configuration handler.
      */
-    fun start(context: Any? = null, configuration: (SentryKmpOptions) -> Unit) {
+    fun start(context: Any? = null, configuration: (SentryKMPOptions) -> Unit) {
         SentryBridge.start(context, configuration)
     }
 
@@ -17,7 +17,7 @@ object SentryKMP {
      *
      * @param configuration Options configuration handler.
      */
-    fun start(configuration: (SentryKmpOptions) -> Unit) {
+    fun start(configuration: (SentryKMPOptions) -> Unit) {
         SentryBridge.start(null, configuration)
     }
 
@@ -54,6 +54,6 @@ object SentryKMP {
     }
 }
 
-fun interface OptionsConfiguration<T: SentryKmpOptions> {
+fun interface OptionsConfiguration<T: SentryKMPOptions> {
     fun configure(options: T)
 }
