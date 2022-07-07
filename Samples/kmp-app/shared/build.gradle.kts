@@ -17,12 +17,15 @@ kotlin {
         homepage = "Link to the Shared Module homepage"
         ios.deploymentTarget = "14.1"
         podfile = project.file("../iosApp/Podfile")
+
+        pod("Sentry", "~> 7.19.0")
+
         framework {
             baseName = "shared"
             export("io.sentry.kotlin.multiplatform:sentry-kotlin-multiplatform:0.0.1")
         }
     }
-    
+
     sourceSets {
         val commonMain by getting {
             dependencies {

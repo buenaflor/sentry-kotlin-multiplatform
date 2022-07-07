@@ -17,6 +17,7 @@ struct iOSApp: App {
             VStack(alignment: .leading) {
                 Button("Show details") {
                     sentry.captureMessage(message: "KMP Sample App " + Platform().platform)
+                    SharedBusinessLogic().doException()
                 }
             }
 		}

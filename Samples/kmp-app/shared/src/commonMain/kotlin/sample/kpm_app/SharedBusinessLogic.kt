@@ -11,7 +11,16 @@ object SharedBusinessLogic {
         SentryKMP.captureMessage(message)
     }
 
-    fun captureException(e: Throwable) {
-        SentryKMP.captureException(e)
+    fun captureException(exception: Throwable) {
+        SentryKMP.captureException(exception)
+    }
+
+    fun doException() {
+        try {
+            val arr = arrayOf(1)
+            arr[2]
+        } catch (exception: Exception) {
+            captureException(exception)
+        }
     }
 }
