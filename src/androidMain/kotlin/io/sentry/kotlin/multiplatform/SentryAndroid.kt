@@ -13,7 +13,9 @@ internal actual object SentryBridge {
     actual fun start(context: Any?, configuration: OptionsConfiguration<SentryKMPOptions>) {
         val options = SentryKMPOptions()
         configuration.configure(options)
-        SentryAndroid.init(context as Context, convertToSentryAndroidOptions(options))
+        if (context is Context) {
+            SentryAndroid.init(context, convertToSentryAndroidOptions(options))
+        }
     }
 
     actual fun captureException(throwable: Throwable) {
