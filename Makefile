@@ -9,10 +9,9 @@ clean:
 
 # build and run tests
 compile:
-	./gradlew build
-	sudo xcode-select --switch /Applications/Xcode_12.5.1.app && /usr/bin/xcodebuild -version
-	cd ./sentry-samples/kmp-app/iosApp
-	pod install
+	# ./gradlew build
+	# sudo xcode-select --switch /Applications/Xcode_12.5.1.app && /usr/bin/xcodebuild -version
+	cd ./sentry-samples/kmp-app/iosApp; pod install
 	xcodebuild -workspace ./sentry-samples/kmp-app/iosApp/iosApp.xcworkspace -scheme iosApp -configuration Debug -sdk iphonesimulator -arch arm64
 
 # We stop gradle at the end to make sure the cache folders
