@@ -34,7 +34,10 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
-            
+
+      - name: Force Xcode 11
+        run: sudo xcode-select -switch /Applications/Xcode_12.0.app
+
       # Clean, build
       - name: Make all
         run: make all
