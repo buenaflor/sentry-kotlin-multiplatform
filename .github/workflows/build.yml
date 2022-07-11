@@ -9,6 +9,9 @@ jobs:
   build:
     name: Build Job ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
+    env:
+      XCODE_VERSION: 12.5.1
+
     strategy:
       fail-fast: false
       matrix:
@@ -35,8 +38,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
-      - name: Force Xcode 11
-        run: sudo xcode-select -switch /Applications/Xcode_12.0.app
+      - name: Select Xcode 12
+        run: sudo xcode-select --switch /Applications/Xcode_${{ env.XCODE_VERSION }}.app
 
       # Clean, build
       - name: Make all
