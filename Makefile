@@ -9,7 +9,7 @@ clean:
 
 # build and run tests
 compile:
-	# ./gradlew build
+	./gradlew build
 	cd ./sentry-samples/kmp-app/iosApp; pod install
 	xcodebuild -workspace ./sentry-samples/kmp-app/iosApp/iosApp.xcworkspace -scheme iosApp -configuration Debug -sdk iphonesimulator -arch arm64
 
